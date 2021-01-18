@@ -1,0 +1,20 @@
+{
+  "culture": "is-IS",
+  "texts": {
+    "AppName": "Heima Streymi",
+    "Menu:Home": "Heim",
+    "Welcome": "Velkominn",
+    "LongWelcomeMessage": "Velkominn á heimastreymi.is! Bestu streymisveituna á íslandi!",
+    "CreateEvent": "Búa til nýjann atburð",
+    "UpcomingEvents": "Atburðir á dagskrá",
+    "Free": "Frítt",
+    "Back": "Til baka",
+    "LoginToAttend": "Skrá inn til að horfa!",
+    "Attendees": "Þátttakendur",
+    "RegisterNow": "Skrá sig núna!",
+    "CancelRegistration": "Hætta við þáttöku!",
+    "EventStartTime": "Viðburður byrjar kl",
+    "YouAreRegisteredInThisEvent": "Þú hefur skráð þig á þennann viðburð"
+  }
+}
+ 
