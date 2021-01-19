@@ -252,9 +252,9 @@ paket-files/
 *.sln.iml
 
 # EventVideoStreaming
-src/TS.EventVideoStreaming.Web/Logs/*
-src/TS.EventVideoStreaming.Web.Host/Logs/*
-src/TS.EventVideoStreaming.IdentityServer/Logs/*
-src/TS.EventVideoStreaming.HttpApi.Host/Logs/*
-src/TS.EventVideoStreaming.HttpApi.Host/Logs/*
-src/TS.EventVideoStreaming.DbMigrator/Logs/*
+src/EventOrganizer.Web/Logs/*
+src/EventOrganizer.Web.Host/Logs/*
+src/EventOrganizer.IdentityServer/Logs/*
+src/EventOrganizer.HttpApi.Host/Logs/*
+src/EventOrganizer.HttpApi.Host/Logs/*
+src/EventOrganizer.DbMigrator/Logs/*

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Volo.Abp;
@@ -14,6 +15,15 @@ namespace EventOrganizer.Events
         public EventManager(IRepository<Event, Guid> eventRepository)
         {
             this.eventRepository = eventRepository;
+        }
+
+        public async Task<Event> EventWithDetails(Guid id)
+        {
+            var query =  eventRepository
+                .WithDetails(x => x.Attendees)
+                .Where(x => x.Id == id);
+
+            return await AsyncExecuter.FirstOrDefaultAsync(query);
         }
 
         public async Task<Event> CreateAsync(

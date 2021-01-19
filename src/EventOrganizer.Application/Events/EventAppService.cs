@@ -46,8 +46,7 @@ namespace EventOrganizer.Events
 
         public async Task<EventDetailDto> GetAsync(Guid id)
         {
-            var @event = await eventRepository.GetAsync(id);
-            //@event has 0 Attendees even thought they are saved in the DB
+            var @event = await eventManager.EventWithDetails(id);
             var attendeeIds = @event.Attendees.Select(a => a.UserId).ToList();
             var attendees = (await AsyncExecuter.ToListAsync(userRepository.Where(u => attendeeIds.Contains(u.Id))))
                 .ToDictionary(x => x.Id);
@@ -71,7 +70,6 @@ namespace EventOrganizer.Events
                 return;
             }
 
-            // Hérna er attendee vistaður!
             @event.Attendees.Add(new Attendee {UserId = CurrentUser.GetId(), CreationTime = Clock.Now});
             await eventRepository.UpdateAsync(@event);
         }
@@ -79,7 +77,7 @@ namespace EventOrganizer.Events
         [Authorize]
         public async Task UnregisterAsync(Guid id)
         {
-            var @event = await eventRepository.GetAsync(id);
+            var @event = await eventManager.EventWithDetails(id);
             var removedItems = @event.Attendees.RemoveAll(x => x.UserId == CurrentUser.Id);
             if (removedItems.Any())
             {
@@ -90,7 +88,7 @@ namespace EventOrganizer.Events
         [Authorize]
         public async Task DeleteAsync(Guid id)
         {
-            var @event = await eventRepository.GetAsync(id);
+            var @event = await eventManager.EventWithDetails(id);
 
             if (CurrentUser.Id != @event.CreatorId)
             {
